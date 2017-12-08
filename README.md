@@ -1,2 +1,2 @@
-# robotique
+# RobotiqueGoT
 Projet de robotique GoT
