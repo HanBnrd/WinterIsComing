@@ -1,6 +1,8 @@
 package achievement2;
 
-public class Wait {
+import lejos.robotics.subsumption.Behavior;
+
+public class Wait implements Behavior {
 	
 	public Wait() {
 		// TODO Auto-generated constructor stub
