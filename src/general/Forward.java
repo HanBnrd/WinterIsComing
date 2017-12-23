@@ -1,4 +1,4 @@
-package Achievement1;
+package general;
 
 import java.util.Hashtable;
 

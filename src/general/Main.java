@@ -1,8 +1,10 @@
-package Achievement1;
+package general;
 
 import java.util.ArrayList;
 //import java.util.Collections;
 import java.util.Hashtable;
+
+import achievement1.BlackLineDetected;
 
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;

@@ -1,4 +1,4 @@
-package Achievement1;
+package achievement1;
 
 import java.util.ArrayList;
 import java.util.Collections;
