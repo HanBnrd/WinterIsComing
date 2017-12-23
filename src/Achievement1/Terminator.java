@@ -6,7 +6,7 @@ import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.Battery;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
-import lejos.hardware.motor.Motor;
+//import lejos.hardware.motor.Motor;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.navigation.MovePilot;
@@ -54,7 +54,7 @@ public class Terminator implements Behavior
 		}
 		arbitrator.stop();
 		LCD.clear();
-		LCD.drawString("Au revoir", 0, 0);
+		LCD.drawString("Au revoir", 0, 4);
 		LCD.refresh();
 		Button.waitForAnyPress();
 		LCD.clear();

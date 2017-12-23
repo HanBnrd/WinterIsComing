@@ -4,31 +4,48 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 
+import lejos.hardware.Button;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.navigation.MovePilot;
+import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
 public class BlackLineDetected implements Behavior
 {
 	EV3ColorSensor colorSensor;
+	Arbitrator arby;
 	float[] sample;
-	Hashtable<String,float[]> nuances;
+	Hashtable<Colour,float[]> colours;
 	MovePilot pilot;
 	
-	public BlackLineDetected(EV3ColorSensor cs, Hashtable<String,float[]> nuances, MovePilot p)
+	public void setArbitrator(Arbitrator a) {
+		this.arby=a;
+	}
+	
+	public BlackLineDetected(EV3ColorSensor cs, Hashtable<Colour,float[]> colours, MovePilot p)
 	{
 		// TODO Auto-generated constructor stub
-		sample = new float[]{0};
+		sample = new float[cs.sampleSize()];
 		colorSensor = cs;
-		this.nuances = nuances;
+		this.colours = colours;
 		pilot = p;
 	}
 
 	@Override
-	public boolean takeControl() {
+	public boolean takeControl()
+	{
 		// TODO Auto-generated method stub
 		colorSensor.fetchSample(sample, 0);
-		return sample[0] <= nuances.get("Black")[1] || sample[0] >= nuances.get("Black")[0];
+		Colour c = getColour(sample);
+		//LCD.clear();
+		//LCD.drawString(c, 0, 4);
+		//LCD.refresh();
+		//String str = "" +c.equals("Black");
+		//LCD.drawString(str, 0, 5);
+		//LCD.refresh();
+		//if (c.equals("Black")) arby.stop();
+		return c == Colour.BLACK;
 	}
 
 	@Override
@@ -36,23 +53,54 @@ public class BlackLineDetected implements Behavior
 	{
 		// TODO Auto-generated method stub
 		pilot.stop();
+		LCD.clear();
+		LCD.drawString("Black line detected !", 0, 2);
+		LCD.refresh();
 		colorSensor.fetchSample(sample, 0);
-		if (sample[0] <= nuances.get("Black")[1] || sample[0] >= nuances.get("Black")[0])
-			pilot.travel(20);
+		Colour colour = getColour(sample);
+		if (colour == Colour.BLACK || colour == Colour.UNKNOWN)
+			pilot.travel(10);
 		colorSensor.fetchSample(sample, 0);
-		String colour = getColour(sample[0]);
-		System.out.println(colour + " : " + sample[0]);
+		colour = getColour(sample);
+		String message = "We're totally lost !!!";
+		switch (colour)
+		{
+		case WHITE: message = "Let's go et c'est parti les amis !";
+		break;
+		case GRENN: message = "I'm in the plain !";
+		break;
+		case BROWN: message = "Space Mountain !!!";
+		break;
+		case RED: message = "Bye I go to bed !";
+		break;
+		case BLUE: message = "This is the wall !";
+		break;
+		case BLACK: message = "Black is black ! There's no more hope !";
+		break;
+		case UNKNOWN: message = "Where did you bring me ??";
+		}
+		LCD.drawString(message, 0, 3);
+		LCD.refresh();
+		Button.waitForAnyPress();
 	}
 
-	private String getColour(float f) {
+	public Colour getColour(float[] rgb) {
 		// TODO Auto-generated method stub
-		String result = "Unknown !";
-		for (String colour : nuances.keySet())
+		float[] tabColours;
+		for (Colour colour : colours.keySet())
 		{
-			if (f <= nuances.get(colour)[1] || sample[0] >= nuances.get(colour)[0])
-				result = colour;
+			tabColours = colours.get(colour);
+			if (rgb[0] <= tabColours[0] + (50*tabColours[0])/100
+				&& rgb[0] >= tabColours[0] - (50*tabColours[0])/100
+				&& rgb[1] <= tabColours[1] + (50*tabColours[1])/100
+				&& rgb[1] >= tabColours[1] - (50*tabColours[1])/100
+				&& rgb[2] <= tabColours[2] + (50*tabColours[2])/100
+				&& rgb[2] >= tabColours[2] - (50*tabColours[2])/100)
+			{
+				return colour;
+			}
 		}
-		return result;
+		return Colour.UNKNOWN;
 	}
 
 	@Override
