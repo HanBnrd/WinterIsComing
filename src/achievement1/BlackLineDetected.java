@@ -18,11 +18,11 @@ public class BlackLineDetected implements Behavior
 	float[] sample;
 	Hashtable<Colour,float[]> colours;
 	MovePilot pilot;
-	
+
 	public void setArbitrator(Arbitrator a) {
 		this.arby=a;
 	}
-	
+
 	public BlackLineDetected(EV3ColorSensor cs, Hashtable<Colour,float[]> colours, MovePilot p)
 	{
 		// TODO Auto-generated constructor stub
@@ -67,7 +67,7 @@ public class BlackLineDetected implements Behavior
 		{
 		case WHITE: message = "Let's go et c'est parti les amis !";
 		break;
-		case GRENN: message = "I'm in the plain !";
+		case GREEN: message = "I'm in the plain !";
 		break;
 		case BROWN: message = "Space Mountain !!!";
 		break;
