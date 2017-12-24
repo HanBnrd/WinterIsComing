@@ -1,4 +1,4 @@
-package achievement1;
+package general;
 
 public enum Colour
 {

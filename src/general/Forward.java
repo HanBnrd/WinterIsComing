@@ -2,12 +2,10 @@ package general;
 
 import java.util.Hashtable;
 
-import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
-import lejos.utility.Delay;
 
 public class Forward implements Behavior
 {

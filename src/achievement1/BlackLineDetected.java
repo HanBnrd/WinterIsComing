@@ -1,7 +1,7 @@
 package achievement1;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import general.Colour;
+
 import java.util.Hashtable;
 
 import lejos.hardware.Button;

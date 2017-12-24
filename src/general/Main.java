@@ -74,7 +74,7 @@ public class Main
 				break;
 				case 2: colour = Colour.WHITE;
 				break;
-				case 3: colour = Colour.GRENN;
+				case 3: colour = Colour.GREEN;
 				break;
 				case 4: colour = Colour.BLUE;
 				break;
