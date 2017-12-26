@@ -7,10 +7,13 @@ import lejos.hardware.sensor.BaseSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
-public class Main {
+public class Move {
 	public static void main(String[] args) {
 		System.out.println("Bonjour");
         Button.waitForAnyPress();
+        Map.POSITION[0] = 6;
+        Map.POSITION[1] = 0;
+        Map.POSITION[2] = 0;
         ArrayList<BaseSensor> al=new ArrayList<>();
         Terminator t=new Terminator(al);
         Behavior w=new Wait();
@@ -22,5 +25,7 @@ public class Main {
         Arbitrator ar=new Arbitrator(ba);
         t.setArbitrator(ar);
         ar.go();
+
 	}
+
 }

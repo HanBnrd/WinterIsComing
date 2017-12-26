@@ -14,10 +14,11 @@ public class Map {
 	// 2 for blue
 	// 3 for brown
 	// 4 for red
-	
+
+	public static int[] POSITION=new int[2];
 	// 0 for north
 	// 1 for east
 	// 2 for south
 	// 3 for west
-	public static int[] POSITION={6,0,0};
+	
 }
