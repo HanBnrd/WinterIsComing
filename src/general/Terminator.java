@@ -26,7 +26,7 @@ public class Terminator implements Behavior
 		pilot = p;
 	}
 	
-	void setArbitrator(Arbitrator arby)
+	public void setArbitrator(Arbitrator arby)
 	{
 		arbitrator = arby;
 	}
@@ -43,14 +43,17 @@ public class Terminator implements Behavior
 	{
 		// TODO Auto-generated method stub
 		pilot.stop();
-		for (BaseSensor sensor : sensors)
+		if (sensors != null)
 		{
-			if (sensor instanceof EV3TouchSensor)
-				((EV3TouchSensor) sensor).close();
-			else if (sensor instanceof EV3ColorSensor)
-				((EV3ColorSensor) sensor).close();
-			else
-				sensor.close();
+			for (BaseSensor sensor : sensors)
+			{
+				if (sensor instanceof EV3TouchSensor)
+					((EV3TouchSensor) sensor).close();
+				else if (sensor instanceof EV3ColorSensor)
+					((EV3ColorSensor) sensor).close();
+				else
+					sensor.close();
+			}
 		}
 		arbitrator.stop();
 		LCD.clear();
