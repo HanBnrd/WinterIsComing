@@ -1,5 +1,6 @@
 package achievement2;
 
+import general.Map;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;

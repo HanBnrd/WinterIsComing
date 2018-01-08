@@ -1,6 +1,6 @@
 package achievement3;
 
-import achievement2.Map;
+import general.Map;
 import lejos.hardware.motor.Motor;
 import lejos.robotics.chassis.Chassis;
 import lejos.robotics.chassis.Wheel;
