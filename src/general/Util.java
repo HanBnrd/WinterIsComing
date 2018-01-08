@@ -8,6 +8,7 @@ import lejos.robotics.navigation.MovePilot;
 
 public abstract class Util
 {
+	public static final float SQUAREWIDTH = 8.8f;
 	public static MovePilot newPilot()
 	{
 		Wheel wheel1 = WheeledChassis.modelWheel(Motor.B, 56).offset(-60);
