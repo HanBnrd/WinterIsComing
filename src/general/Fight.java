@@ -1,6 +1,6 @@
 package general;
 
-import achievement2.*;
+import general.Map;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
