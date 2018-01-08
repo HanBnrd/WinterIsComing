@@ -3,6 +3,7 @@ package achievement3;
 import java.io.DataInputStream;
 import java.io.InputStream;
 
+import general.Fight;
 import general.Terminator;
 import general.Util;
 import general.Wait;
