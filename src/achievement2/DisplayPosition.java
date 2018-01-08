@@ -1,6 +1,7 @@
 package achievement2;
 
 import lejos.hardware.Button;
+import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
@@ -18,7 +19,9 @@ public class DisplayPosition implements Behavior {
 
 	public void action() {
 		// TODO Auto-generated method stub
-        System.out.println(Map.POSITION[0]+" "+" "+Map.POSITION[1]);
+		LCD.clear();
+		LCD.drawString(Map.POSITION[0]+" "+" "+Map.POSITION[1], 0, 3);
+		LCD.refresh();
 	}
 
 	public void suppress() {
