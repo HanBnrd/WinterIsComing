@@ -2,12 +2,14 @@ package achievement2;
 
 import java.util.ArrayList;
 
+import general.Map;
+import general.Wait;
 import lejos.hardware.Button;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
-public class Move {
+public class MainMove {
 	public static void main(String[] args) {
 		System.out.println("Bonjour");
         Button.waitForAnyPress();
