@@ -6,7 +6,6 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Fight implements Behavior
 {
-	boolean fight = false;
 	int [] whiteWalkerPosition;
 	MovePilot pilot;
 	
@@ -15,21 +14,11 @@ public class Fight implements Behavior
 		this.pilot = pilot;
 	}
 	
-	public void setFightMode(boolean fight)
-	{
-		this.fight = fight;
-	}
-	
-	public void setWhiteWalkerPosition(int[] position)
-	{
-		whiteWalkerPosition = position;  
-	}
-	
 	@Override
 	public boolean takeControl()
 	{
 		// TODO Auto-generated method stub
-		return fight;
+		return Map.WHITEWALKERPOSITION != null;
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class Map {
 		// 2 for south
 		// 3 for west
 	
-	public static int[] WHITEWALKERPOSITION = new int[2];
+	public static int[] WHITEWALKERPOSITION = null;
 	// POSITION[0] is map row
 	// POSITION[1] is map col
 }
