@@ -1,5 +1,6 @@
 package achievement2;
 
+import general.Map;
 import lejos.hardware.Button;
 import lejos.hardware.motor.Motor;
 import lejos.robotics.chassis.Chassis;

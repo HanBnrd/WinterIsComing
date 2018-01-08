@@ -1,4 +1,4 @@
-package achievement2;
+package general;
 
 public class Map {
 	// map 7 rows 5 col
@@ -24,4 +24,7 @@ public class Map {
 		// 2 for south
 		// 3 for west
 	
+	public static int[] WHITEWALKERPOSITION = new int[2];
+	// POSITION[0] is map row
+	// POSITION[1] is map col
 }

@@ -2,6 +2,7 @@ package achievement2;
 
 import java.util.ArrayList;
 
+import general.Map;
 import lejos.hardware.Button;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.robotics.subsumption.Arbitrator;

@@ -1,5 +1,6 @@
 package achievement3;
 
+import general.Fight;
 import general.Terminator;
 import general.Util;
 import lejos.robotics.navigation.MovePilot;

@@ -1,4 +1,4 @@
-package achievement3;
+package general;
 
 import achievement2.*;
 import lejos.robotics.navigation.MovePilot;
@@ -42,57 +42,57 @@ public class Fight implements Behavior
 		{
 			switch (position[2])
 			{
-			case 0: pilot.rotate(-90);
+			case 1: pilot.rotate(90);
 			break;
-			case 2: pilot.rotate(90);
+			case 2: pilot.rotate(180);
 			break;
-			case 3: pilot.rotate(180);
+			case 3: pilot.rotate(-90);
 			break;
 			}
-			float x = whiteWalkerPosition[0] - position[0];
-			pilot.travel(squareSize * x);
+			int nbSquare = whiteWalkerPosition[0] - position[0];
+			pilot.travel(squareSize * nbSquare);
 		}
 		else if (position[0] > whiteWalkerPosition[0])
 		{
 			switch (position[2])
 			{
-			case 0: pilot.rotate(90);
+			case 0: pilot.rotate(180);
 			break;
-			case 1: pilot.rotate(180);
+			case 1: pilot.rotate(-90);
 			break;
-			case 2: pilot.rotate(-90);
+			case 2: pilot.rotate(90);
 			break;
 			}
-			float x = position[0] - whiteWalkerPosition[0];
-			pilot.travel(squareSize * x);
+			int nbSquare = position[0] - whiteWalkerPosition[0];
+			pilot.travel(squareSize * nbSquare);
 		}
 		if (position[1] > whiteWalkerPosition[1])
 		{
 			switch (position[2])
 			{
-			case 1: pilot.rotate(-90);
+			case 0: pilot.rotate(-90);
 			break;
-			case 2: pilot.rotate(180);
+			case 1: pilot.rotate(180);
 			break;
-			case 3: pilot.rotate(90);
+			case 2: pilot.rotate(90);
 			break;
 			}
-			float y = position[1] - whiteWalkerPosition[1];
-			pilot.travel(squareSize * y);
+			int nbSquare = position[1] - whiteWalkerPosition[1];
+			pilot.travel(squareSize * nbSquare);
 		}
 		else if (position[1] < whiteWalkerPosition[1])
 		{
 			switch (position[2])
 			{
-			case 0: pilot.rotate(180);
+			case 0: pilot.rotate(90);
 			break;
-			case 1: pilot.rotate(90);
+			case 1: pilot.rotate(-90);
 			break;
-			case 3: pilot.rotate(-90);
+			case 3: pilot.rotate(180);
 			break;
 			}
-			float y = whiteWalkerPosition[1] - position[1];
-			pilot.travel(squareSize * y);
+			int nbSquare = whiteWalkerPosition[1] - position[1];
+			pilot.travel(squareSize * nbSquare);
 		}
 	}
 
