@@ -39,7 +39,6 @@ public class Forward implements Behavior {
         } else if (Map.POSITION[2]==3) {
         	Map.POSITION[1]=Map.POSITION[1]-1;
         }
-        System.out.println(Map.POSITION[0]+" "+" "+Map.POSITION[1]);
 	}
 
 	public void suppress() {
