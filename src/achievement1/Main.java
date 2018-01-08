@@ -1,18 +1,15 @@
-package general;
+package achievement1;
 
 import java.util.ArrayList;
-//import java.util.Collections;
 import java.util.Hashtable;
 
-import achievement1.BlackLineDetected;
-
+import general.Terminator;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.Motor;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.hardware.sensor.EV3ColorSensor;
-//import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.robotics.chassis.Chassis;
 import lejos.robotics.chassis.Wheel;
 import lejos.robotics.chassis.WheeledChassis;
@@ -25,10 +22,9 @@ public class Main
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		LCD.drawString("Hello World !", 0, 0);
-        Button.waitForAnyPress();
         ArrayList<BaseSensor> sensors = new ArrayList<BaseSensor>();
-		
+		LCD.drawString("Appuyez pour", 0, 2);
+		LCD.drawString("calibrer", 0, 3);
 		EV3ColorSensor cs = new EV3ColorSensor(SensorPort.S3);
 		cs.setCurrentMode(cs.getRGBMode().getName());
 		sensors.add(cs);
@@ -41,11 +37,15 @@ public class Main
 		Behavior[] bArray = {forward, bld, terminator}; // du moins prioritaire au plus prioritaire
 		Arbitrator arby = new Arbitrator(bArray);
 		terminator.setArbitrator(arby);
-		bld.setArbitrator(arby);
 		LCD.clear();
 		LCD.drawString("Ready to go !", 0, 2);
 		LCD.refresh();
 		Button.waitForAnyPress();
+		LCD.clear();
+		LCD.drawString(bld.getMessage(bld.getSensorColour()), 0, 2);
+		LCD.drawString("Parcours de la", 0, 3);
+		LCD.drawString("1ere case", 2, 4);
+		LCD.refresh();
 		arby.go();
 	}
 
@@ -55,7 +55,7 @@ public class Main
 		Wheel wheel2 = WheeledChassis.modelWheel(Motor.C, 56).offset(60);
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheel1, wheel2}, 2);
 		MovePilot pilot = new MovePilot(chassis);
-		pilot.setLinearSpeed(60);
+		pilot.setLinearSpeed(30);
 		return pilot;
 	}
 	
