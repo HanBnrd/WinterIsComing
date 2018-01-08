@@ -23,5 +23,6 @@ public class Map {
 		// 1 for east
 		// 2 for south
 		// 3 for west
-	
+	public static int[] ENNEMY=new int[2];
+	// enemy robot position
 }

@@ -8,17 +8,17 @@ import general.Map;
 
 import lejos.hardware.Button;
 import lejos.remote.nxt.BTConnection;
+import lejos.remote.nxt.BTConnector;
+import lejos.remote.nxt.NXTConnection;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class SendPosition implements Behavior {
 	MovePilot pilot;
-	BTConnection btc;
 	
-	public SendPosition(MovePilot mp, BTConnection btc) {
+	public SendPosition(MovePilot mp) {
 		// TODO Auto-generated constructor stub
 		this.pilot = mp;
-		this.btc = btc;
 		
 	}
 
@@ -30,22 +30,17 @@ public class SendPosition implements Behavior {
 	public void action() {
 		// TODO Auto-generated method stub
 		pilot.stop();
-		
+		BTConnector bt = new BTConnector();
+		BTConnection btc = bt.connect("00:16:53:43:63:D4", NXTConnection.PACKET);
 		OutputStream os = btc.openOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
 		try {
-			dos.writeUTF(Map.POSITION[0]+";"+Map.POSITION[1]);
+			dos.writeUTF(Map.POSITION[0]+";"+Map.POSITION[1]);// écrit une valeur str dans le flux
+			dos.flush();// force l’envoi
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} // écrit une valeur int dans le flux
-		try {
-			dos.flush();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} // force l’envoi
-		
+		}
 		
 	}
 
