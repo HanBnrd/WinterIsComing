@@ -11,12 +11,12 @@ import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
-public class Terminator implements Behavior
+public class TerminatorSensor implements Behavior
 {
 	ArrayList<BaseSensor> sensors;
 	Arbitrator arbitrator;
 	
-	public Terminator(ArrayList<BaseSensor> sensors)
+	public TerminatorSensor(ArrayList<BaseSensor> sensors)
 	{
 		// TODO Auto-generated constructor stub
 		this.sensors = sensors;
