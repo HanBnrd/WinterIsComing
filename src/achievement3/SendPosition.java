@@ -35,7 +35,8 @@ public class SendPosition implements Behavior {
 		OutputStream os = btc.openOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
 		try {
-			dos.writeUTF(Map.POSITION[0]+";"+Map.POSITION[1]);// écrit une valeur str dans le flux
+			String data=Map.POSITION[0]+";"+Map.POSITION[1];
+			dos.writeUTF(data);// écrit une valeur str dans le flux
 			dos.flush();// force l’envoi
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

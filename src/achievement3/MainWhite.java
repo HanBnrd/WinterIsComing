@@ -1,5 +1,6 @@
 package achievement3;
 
+import general.Map;
 import general.Wait;
 import general.Terminator;
 import general.Util;
@@ -17,6 +18,9 @@ public class MainWhite {
 		// TODO Auto-generated method stub
 		System.out.println("Bonjour");
         Button.waitForAnyPress();
+        Map.POSITION[0] = 6;
+        Map.POSITION[1] = 0;
+        Map.POSITION[2] = 0;
 		MovePilot pilot = Util.newPilot();
 		Behavior w=new Wait();
 		Behavior sp = new SendPosition(pilot);

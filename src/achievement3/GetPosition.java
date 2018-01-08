@@ -35,9 +35,9 @@ public class GetPosition implements Behavior {
 		// TODO Auto-generated method stub
 		
 		String[] pos = data.split(";");
-		Map.ENNEMY[0]=Integer.parseInt(pos[0]);
-		Map.ENNEMY[0]=Integer.parseInt(pos[1]);
-		System.out.println(Map.ENNEMY);
+		Map.WHITEWALKERPOSITION[0]=Integer.parseInt(pos[0]);
+		Map.WHITEWALKERPOSITION[0]=Integer.parseInt(pos[1]);
+		System.out.println(Map.WHITEWALKERPOSITION);
 		
 	}
 
