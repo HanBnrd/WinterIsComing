@@ -46,7 +46,6 @@ public class TurnBack implements Behavior {
         	Map.POSITION[2]=1;
         	Map.POSITION[1]=Map.POSITION[1]+1;
         }
-        System.out.println(Map.POSITION[0]+" "+" "+Map.POSITION[1]);
 	}
 
 	public void suppress() {

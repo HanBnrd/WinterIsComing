@@ -15,7 +15,7 @@ public class Map {
 	// 3 for brown
 	// 4 for red
 
-	public static int[] POSITION=new int[2];
+	public static int[] POSITION=new int[3];
 	// 0 for north
 	// 1 for east
 	// 2 for south

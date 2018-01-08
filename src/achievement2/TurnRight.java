@@ -48,7 +48,6 @@ public class TurnRight implements Behavior {
 	        	Map.POSITION[2]=0;
 	        	Map.POSITION[0]=Map.POSITION[0]-1;
 	        }
-	     System.out.println(Map.POSITION[0]+" "+" "+Map.POSITION[1]);
 	}
 
 	public void suppress() {
