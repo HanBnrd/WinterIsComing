@@ -26,7 +26,7 @@ public class Terminator implements Behavior
 		pilot = p;
 	}
 	
-	void setArbitrator(Arbitrator arby)
+	public void setArbitrator(Arbitrator arby)
 	{
 		arbitrator = arby;
 	}
