@@ -15,13 +15,14 @@ public class Move {
         Map.POSITION[1] = 0;
         Map.POSITION[2] = 0;
         ArrayList<BaseSensor> al=new ArrayList<>();
-        Terminator t=new Terminator(al);
+        TerminatorSensor t=new TerminatorSensor(al);
         Behavior w=new Wait();
+        Behavior dp=new DisplayPosition();
         Behavior bf=new Forward();
         Behavior bb=new TurnBack();
         Behavior bl=new TurnLeft();
         Behavior br=new TurnRight();
-        Behavior[] ba={w,bf,bb,bl,br,t};
+        Behavior[] ba={w,bf,bb,bl,br,dp,t};
         Arbitrator ar=new Arbitrator(ba);
         t.setArbitrator(ar);
         ar.go();

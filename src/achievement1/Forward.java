@@ -1,8 +1,7 @@
-package general;
+package achievement1;
 
 import java.util.Hashtable;
 
-import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
@@ -36,14 +35,11 @@ public class Forward implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		LCD.clear();
+		/*LCD.clear();
 		LCD.drawString("Forward !", 0, 2);
-		LCD.refresh();
+		LCD.refresh();*/
 		if (!pilot.isMoving())
 			pilot.forward();
-		/*cs.fetchSample(sample, 0);
-		String c = getColour(sample);
-		if (c.equals("Black")) pilot.stop();*/
 		Thread.yield();
 	}
 	

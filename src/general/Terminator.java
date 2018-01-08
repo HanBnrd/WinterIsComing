@@ -42,7 +42,8 @@ public class Terminator implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		pilot.stop();
+		if (pilot != null)
+			pilot.stop();
 		if (sensors != null)
 		{
 			for (BaseSensor sensor : sensors)
