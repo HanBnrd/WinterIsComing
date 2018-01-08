@@ -3,7 +3,10 @@ package achievement1;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import achievement1.BlackLineDetected;
 import general.Terminator;
+import general.Util;
+
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.Motor;
@@ -30,7 +33,7 @@ public class Main
 		sensors.add(cs);
 		Hashtable<Colour,float[]> colours = getColourValues(cs);
 		
-		MovePilot pilot = newPilot();
+		MovePilot pilot = Util.newPilot();
 		Behavior forward = new Forward(cs, colours, pilot); // Avancer
 		BlackLineDetected bld = new BlackLineDetected(cs, colours, pilot);
 		Terminator terminator = new Terminator(sensors, pilot);
@@ -47,16 +50,6 @@ public class Main
 		LCD.drawString("1ere case", 2, 4);
 		LCD.refresh();
 		arby.go();
-	}
-
-	private static MovePilot newPilot()
-	{
-		Wheel wheel1 = WheeledChassis.modelWheel(Motor.B, 56).offset(-60);
-		Wheel wheel2 = WheeledChassis.modelWheel(Motor.C, 56).offset(60);
-		Chassis chassis = new WheeledChassis(new Wheel[]{wheel1, wheel2}, 2);
-		MovePilot pilot = new MovePilot(chassis);
-		pilot.setLinearSpeed(30);
-		return pilot;
 	}
 	
 	private static Hashtable<Colour,float[]> getColourValues(EV3ColorSensor cs)
