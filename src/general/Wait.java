@@ -1,4 +1,4 @@
-package achievement2;
+package general;
 
 import lejos.robotics.subsumption.Behavior;
 
