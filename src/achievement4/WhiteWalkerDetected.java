@@ -1,10 +1,7 @@
-package achievement3;
+package achievement4;
 
 import java.util.ArrayList;
 
-import achievement4.BestPath;
-import achievement4.Position;
-import achievement4.PositionWithCost;
 import general.Map;
 import general.Util;
 import lejos.robotics.navigation.MovePilot;

@@ -1,10 +1,6 @@
 package general;
 
 import lejos.hardware.lcd.LCD;
-import lejos.hardware.motor.Motor;
-import lejos.robotics.chassis.Chassis;
-import lejos.robotics.chassis.Wheel;
-import lejos.robotics.chassis.WheeledChassis;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
@@ -27,7 +23,7 @@ public class Watch implements Behavior {
 		LCD.drawString("Watch", 0, 3);
 		LCD.refresh();
 		
-		pilot.travel(8.8);
+		pilot.travel(Util.SQUAREWIDTH);
 		switch (Map.POSITION[2])
 		{
 			case 0: Map.POSITION[0]--;

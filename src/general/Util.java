@@ -16,6 +16,7 @@ public abstract class Util
 		Chassis chassis = new WheeledChassis(new Wheel[]{wheel1, wheel2}, 2);
 		MovePilot pilot = new MovePilot(chassis);
 		pilot.setLinearSpeed(60);
+        pilot.setAngularSpeed(30);
 		return pilot;
 	}
 }

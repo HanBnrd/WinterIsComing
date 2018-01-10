@@ -28,62 +28,69 @@ public class Fight implements Behavior
 		LCD.clear();
 		LCD.drawString("Fight", 0, 3);
 		LCD.refresh();
-		
-		if (Map.POSITION[0] < Map.WHITEWALKERPOSITION[0])
+		float squareSize = 88;
+		int[] position = Map.POSITION;
+		int[] whiteWalkerPosition = Map.WHITEWALKERPOSITION;
+		if (position[0] > whiteWalkerPosition[0])
 		{
 			switch (Map.POSITION[2])
 			{
-			case 1: pilot.rotate(90);
+			case 1: pilot.rotate(-80);
 			break;
-			case 2: pilot.rotate(180);
+			case 2: pilot.rotate(160);
 			break;
-			case 3: pilot.rotate(-90);
+			case 3: pilot.rotate(80);
 			break;
 			}
-			int nbSquare = Map.WHITEWALKERPOSITION[0] - Map.POSITION[0];
-			pilot.travel(Util.SQUAREWIDTH * nbSquare);
+			position[2]=0;
+			int nbSquare = position[0] - whiteWalkerPosition[0];
+			pilot.travel(squareSize * (nbSquare));
 		}
-		else if (Map.POSITION[0] > Map.WHITEWALKERPOSITION[0])
+		else if (position[0] < whiteWalkerPosition[0])
 		{
 			switch (Map.POSITION[2])
 			{
-			case 0: pilot.rotate(180);
+			case 0: pilot.rotate(160);
+					
 			break;
-			case 1: pilot.rotate(-90);
+			case 1: pilot.rotate(80);
 			break;
-			case 2: pilot.rotate(90);
+			case 3: pilot.rotate(-80);
 			break;
 			}
-			int nbSquare = Map.POSITION[0] - Map.WHITEWALKERPOSITION[0];
-			pilot.travel(Util.SQUAREWIDTH * nbSquare);
+			position[2]=2;
+			int nbSquare = whiteWalkerPosition[0]-position[0];
+			pilot.travel(squareSize * (nbSquare));
 		}
 		if (Map.POSITION[1] > Map.WHITEWALKERPOSITION[1])
 		{
 			switch (Map.POSITION[2])
 			{
-			case 0: pilot.rotate(-90);
+			case 0: pilot.rotate(-80);
 			break;
-			case 1: pilot.rotate(180);
+			case 1: pilot.rotate(160);
 			break;
-			case 2: pilot.rotate(90);
+			case 2: pilot.rotate(80);
 			break;
 			}
-			int nbSquare = Map.POSITION[1] - Map.WHITEWALKERPOSITION[1];
-			pilot.travel(Util.SQUAREWIDTH * nbSquare);
+			position[2]=3;
+			int nbSquare = position[1] - whiteWalkerPosition[1];
+			pilot.travel(squareSize * (nbSquare-2)); // to avoid hit
 		}
 		else if (Map.POSITION[1] < Map.WHITEWALKERPOSITION[1])
 		{
 			switch (Map.POSITION[2])
 			{
-			case 0: pilot.rotate(90);
+			case 0: pilot.rotate(80);
 			break;
-			case 1: pilot.rotate(-90);
+			case 2: pilot.rotate(-80);
 			break;
-			case 3: pilot.rotate(180);
+			case 3: pilot.rotate(160);
 			break;
 			}
-			int nbSquare = Map.WHITEWALKERPOSITION[1] - Map.POSITION[1];
-			pilot.travel(Util.SQUAREWIDTH * nbSquare);
+			position[2]=1;
+			int nbSquare = whiteWalkerPosition[1] - position[1];
+			pilot.travel(squareSize * (nbSquare-2)); // to avoid hit
 		}
 		Map.WHITEWALKERPOSITION = null;
 	}

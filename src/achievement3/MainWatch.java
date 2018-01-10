@@ -1,14 +1,18 @@
 package achievement3;
 
 import java.io.DataInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import general.Fight;
+import general.Map;
 import general.Terminator;
 import general.Util;
 import general.Wait;
 import general.Watch;
 import lejos.hardware.Button;
+import lejos.hardware.sensor.BaseSensor;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
 import lejos.robotics.navigation.MovePilot;
@@ -24,18 +28,30 @@ public class MainWatch {
 		// TODO Auto-generated method stub
 		System.out.println("Bonjour");
         Button.waitForAnyPress();
+        Map.POSITION[0] = 6;
+        Map.POSITION[1] = 0;
+        Map.POSITION[2] = 3;
 		MovePilot pilot = Util.newPilot();
 		BTConnector bt = new BTConnector();
 		NXTConnection btc = bt.waitForConnection(100000,NXTConnection.PACKET);
 		InputStream is = btc.openInputStream();
 		DataInputStream dis = new DataInputStream(is);
-		Behavior w = new Wait();
-		Behavior gp = new GetPosition(dis);
-		Behavior watch = new Watch(pilot);
-		Behavior whiteWalkerDetected = new WhiteWalkerDetected(pilot);
-		//Behavior fight = new Fight(pilot);
-		Terminator terminator = new Terminator(null, pilot);
-		Behavior[] bArray = {watch,w,gp,terminator}; // du moins prioritaire au plus prioritaire
+		try {
+			String data = dis.readUTF();
+			System.out.println(data);
+			String[] pos = data.split(";");
+			Map.WHITEWALKERPOSITION=new int[2];
+			Map.WHITEWALKERPOSITION[0]=Integer.parseInt(pos[0]);
+			Map.WHITEWALKERPOSITION[1]=Integer.parseInt(pos[1]);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // récupère la valeur dans le flux
+		ArrayList<BaseSensor> al=new ArrayList<>();
+		Behavior w=new Wait();
+		Behavior f=new Fight(pilot);
+		Terminator terminator = new Terminator(al, pilot);
+		Behavior[] bArray = {w,f,terminator}; // du moins prioritaire au plus prioritaire
 		Arbitrator arby = new Arbitrator(bArray);
 		terminator.setArbitrator(arby);
 		arby.go();

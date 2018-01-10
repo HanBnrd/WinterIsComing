@@ -15,11 +15,21 @@ import lejos.robotics.subsumption.Behavior;
 
 public class SendPosition implements Behavior {
 	MovePilot pilot;
+	boolean messageSent;
 	
 	public SendPosition(MovePilot mp) {
 		// TODO Auto-generated constructor stub
 		this.pilot = mp;
+		this.messageSent = false;
 		
+	}
+	
+	public boolean isMessageSent() {
+		return messageSent;
+	}
+
+	public void setMessageSent(boolean messageSent) {
+		this.messageSent = messageSent;
 	}
 
 	public boolean takeControl() {
@@ -35,13 +45,14 @@ public class SendPosition implements Behavior {
 		OutputStream os = btc.openOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
 		try {
-			dos.writeUTF(Map.POSITION[0]+";"+Map.POSITION[1]);// écrit une valeur str dans le flux
+			String data=Map.POSITION[0]+";"+Map.POSITION[1];
+			dos.writeUTF(data);// écrit une valeur str dans le flux
 			dos.flush();// force l’envoi
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		this.setMessageSent(true);
 	}
 
 	public void suppress() {
