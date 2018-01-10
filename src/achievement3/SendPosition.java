@@ -15,11 +15,21 @@ import lejos.robotics.subsumption.Behavior;
 
 public class SendPosition implements Behavior {
 	MovePilot pilot;
+	boolean messageSent;
 	
 	public SendPosition(MovePilot mp) {
 		// TODO Auto-generated constructor stub
 		this.pilot = mp;
+		this.messageSent = false;
 		
+	}
+	
+	public boolean isMessageSent() {
+		return messageSent;
+	}
+
+	public void setMessageSent(boolean messageSent) {
+		this.messageSent = messageSent;
 	}
 
 	public boolean takeControl() {
@@ -42,7 +52,7 @@ public class SendPosition implements Behavior {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		this.setMessageSent(true);
 	}
 
 	public void suppress() {
