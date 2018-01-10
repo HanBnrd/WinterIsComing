@@ -15,7 +15,7 @@ public class Map {
 	// 3 for brown
 	// 4 for red
 
-	public static int[] POSITION=new int[3];
+	public static int[] POSITION = {6,0,0};
 	// POSITION[0] is map row
 	// POSITION[1] is map col
 	// Position[2] is orientation :

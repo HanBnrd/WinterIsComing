@@ -7,6 +7,7 @@ import general.Fight;
 import general.Terminator;
 import general.Util;
 import general.Wait;
+import general.Watch;
 import lejos.hardware.Button;
 import lejos.remote.nxt.BTConnector;
 import lejos.remote.nxt.NXTConnection;
@@ -28,11 +29,13 @@ public class MainWatch {
 		NXTConnection btc = bt.waitForConnection(100000,NXTConnection.PACKET);
 		InputStream is = btc.openInputStream();
 		DataInputStream dis = new DataInputStream(is);
-		Behavior w=new Wait();
+		Behavior w = new Wait();
 		Behavior gp = new GetPosition(dis);
+		Behavior watch = new Watch(pilot);
+		Behavior whiteWalkerDetected = new WhiteWalkerDetected(pilot);
 		//Behavior fight = new Fight(pilot);
 		Terminator terminator = new Terminator(null, pilot);
-		Behavior[] bArray = {w,gp,terminator}; // du moins prioritaire au plus prioritaire
+		Behavior[] bArray = {watch,w,gp,terminator}; // du moins prioritaire au plus prioritaire
 		Arbitrator arby = new Arbitrator(bArray);
 		terminator.setArbitrator(arby);
 		arby.go();

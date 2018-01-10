@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import general.Map;
 import general.Util;
+import lejos.hardware.Button;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.EV3GyroSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
+import lejos.utility.Delay;
 
 public class DetectWhiteWalker implements Behavior
 {
@@ -32,28 +35,65 @@ public class DetectWhiteWalker implements Behavior
 	@Override
 	public void action() {
 		// TODO Auto-generated method stub
+		LCD.clear();
+		LCD.drawString("DetectWhiteWalker", 0, 3);
+		LCD.refresh();
 		pilot.setAngularSpeed(30);
 		float[] tab = new float[1];
-		ultrasonicSensor.enable();
 		gyroSensor.reset();
-		
-		pilot.rotate(360);
-		while (pilot.isMoving())
-		{
-			ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
-			if (tab[0] <= 0.75)
-	        	pilot.stop();
-		}
-		float distance = tab[0];
+		ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
+		float distance = tab[0] * 1000;
 		gyroSensor.getAngleMode().fetchSample(tab, 0);
-		pilot.rotate(0 - tab[0]);
+		float angle = 0 - tab[0];
+		
+		while (distance >= 750 && angle < 360);
+		{
+			pilot.rotate(10);
+			pilot.stop();
+			ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
+			distance = tab[0] * 1000;
+			gyroSensor.getAngleMode().fetchSample(tab, 0);
+			angle = 0 - tab[0];
+		}
+		
+		LCD.clear();
+		LCD.drawString("" + distance, 0, 2);
+		LCD.drawString("" + angle, 0, 3);
+		LCD.refresh();
+		Button.waitForAnyPress();
+		pilot.rotate(0 - angle);
 		Map.WHITEWALKERPOSITION = getWhiteWalkerPosition(distance, tab[0]);
+		LCD.clear();
+		LCD.drawString(Map.WHITEWALKERPOSITION[1] + " ; " + Map.WHITEWALKERPOSITION[0], 0, 3);
+		LCD.refresh();
+		Button.waitForAnyPress();
 	}
 
 	@Override
 	public void suppress() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	private int[] getWhiteWalkerPosition(float distance, float angle)
+	{
+		int[] whitewalkerPosition = new int[2];
+		double closerAngle = -1;
+		for (int[] rPos : calculRPos(distance))
+		{
+			double rPosAngle = Math.toDegrees(Math.atan2(rPos[0], rPos[1]));
+			if (Math.abs(angle - rPosAngle) < Math.abs(angle - closerAngle)
+					|| closerAngle == -1)
+			{
+				closerAngle = rPosAngle;
+				whitewalkerPosition = rPos;
+			}
+		}
+		
+		whitewalkerPosition[0] += Map.POSITION[1];
+		whitewalkerPosition[1] += Map.POSITION[0];
+
+		return whitewalkerPosition;
 	}
 
 	private ArrayList<int[]> calculRPos(float distance)
@@ -81,27 +121,5 @@ public class DetectWhiteWalker implements Behavior
 			positions.add(pos);
 		}
 		return positions;
-	}
-	
-	private int[] getWhiteWalkerPosition(float distance, float angle)
-	{
-		int[] whitewalkerPosition = new int[2];
-		
-		double closerAngle = -1;
-		for (int[] rPos : calculRPos(distance))
-		{
-			double rPosAngle = Math.toDegrees(Math.atan2(rPos[0], rPos[1]));
-			if (Math.abs(angle - rPosAngle) < Math.abs(angle - closerAngle)
-					|| closerAngle == -1)
-			{
-				closerAngle = rPosAngle;
-				whitewalkerPosition = rPos;
-			}
-		}
-		
-		whitewalkerPosition[0] += Map.POSITION[0];
-		whitewalkerPosition[1] += Map.POSITION[1];
-
-		return whitewalkerPosition;
 	}
 }

@@ -1,12 +1,12 @@
 package general;
 
 import general.Map;
+import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Fight implements Behavior
 {
-	int [] whiteWalkerPosition;
 	MovePilot pilot;
 	
 	public Fight(MovePilot pilot)
@@ -25,11 +25,13 @@ public class Fight implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		float squareSize = 8;
-		int[] position = Map.POSITION;
-		if (position[0] < whiteWalkerPosition[0])
+		LCD.clear();
+		LCD.drawString("Fight", 0, 3);
+		LCD.refresh();
+		
+		if (Map.POSITION[0] < Map.WHITEWALKERPOSITION[0])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 1: pilot.rotate(90);
 			break;
@@ -38,12 +40,12 @@ public class Fight implements Behavior
 			case 3: pilot.rotate(-90);
 			break;
 			}
-			int nbSquare = whiteWalkerPosition[0] - position[0];
-			pilot.travel(squareSize * nbSquare);
+			int nbSquare = Map.WHITEWALKERPOSITION[0] - Map.POSITION[0];
+			pilot.travel(Util.SQUAREWIDTH * nbSquare);
 		}
-		else if (position[0] > whiteWalkerPosition[0])
+		else if (Map.POSITION[0] > Map.WHITEWALKERPOSITION[0])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(180);
 			break;
@@ -52,12 +54,12 @@ public class Fight implements Behavior
 			case 2: pilot.rotate(90);
 			break;
 			}
-			int nbSquare = position[0] - whiteWalkerPosition[0];
-			pilot.travel(squareSize * nbSquare);
+			int nbSquare = Map.POSITION[0] - Map.WHITEWALKERPOSITION[0];
+			pilot.travel(Util.SQUAREWIDTH * nbSquare);
 		}
-		if (position[1] > whiteWalkerPosition[1])
+		if (Map.POSITION[1] > Map.WHITEWALKERPOSITION[1])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(-90);
 			break;
@@ -66,12 +68,12 @@ public class Fight implements Behavior
 			case 2: pilot.rotate(90);
 			break;
 			}
-			int nbSquare = position[1] - whiteWalkerPosition[1];
-			pilot.travel(squareSize * nbSquare);
+			int nbSquare = Map.POSITION[1] - Map.WHITEWALKERPOSITION[1];
+			pilot.travel(Util.SQUAREWIDTH * nbSquare);
 		}
-		else if (position[1] < whiteWalkerPosition[1])
+		else if (Map.POSITION[1] < Map.WHITEWALKERPOSITION[1])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(90);
 			break;
@@ -80,9 +82,10 @@ public class Fight implements Behavior
 			case 3: pilot.rotate(180);
 			break;
 			}
-			int nbSquare = whiteWalkerPosition[1] - position[1];
-			pilot.travel(squareSize * nbSquare);
+			int nbSquare = Map.WHITEWALKERPOSITION[1] - Map.POSITION[1];
+			pilot.travel(Util.SQUAREWIDTH * nbSquare);
 		}
+		Map.WHITEWALKERPOSITION = null;
 	}
 
 	@Override
