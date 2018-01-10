@@ -6,6 +6,8 @@ import general.Watch;
 import general.Fight;
 import general.Terminator;
 import general.Util;
+import lejos.hardware.Button;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.hardware.sensor.EV3GyroSensor;
@@ -31,6 +33,10 @@ public class MainWatch {
 		Behavior[] bArray = {watch, dww, fight, terminator}; // du moins prioritaire au plus prioritaire
 		Arbitrator arby = new Arbitrator(bArray);
 		terminator.setArbitrator(arby);
+		LCD.clear();
+		LCD.drawString("Ready to go !", 0, 2);
+		LCD.refresh();
+		Button.waitForAnyPress();
 		arby.go();
 	}
 }

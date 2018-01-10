@@ -1,6 +1,7 @@
 package general;
 
 import general.Map;
+import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
@@ -24,13 +25,15 @@ public class Fight implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
+		LCD.clear();
+		LCD.drawString("Fight", 0, 3);
+		LCD.refresh();
 		float squareSize = 88;
 		int[] position = Map.POSITION;
 		int[] whiteWalkerPosition = Map.WHITEWALKERPOSITION;
-		System.out.println(whiteWalkerPosition[0]+" "+whiteWalkerPosition[1]);
 		if (position[0] > whiteWalkerPosition[0])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 1: pilot.rotate(-80);
 			break;
@@ -45,7 +48,7 @@ public class Fight implements Behavior
 		}
 		else if (position[0] < whiteWalkerPosition[0])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(160);
 					
@@ -59,9 +62,9 @@ public class Fight implements Behavior
 			int nbSquare = whiteWalkerPosition[0]-position[0];
 			pilot.travel(squareSize * (nbSquare));
 		}
-		if (position[1] > whiteWalkerPosition[1])
+		if (Map.POSITION[1] > Map.WHITEWALKERPOSITION[1])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(-80);
 			break;
@@ -74,9 +77,9 @@ public class Fight implements Behavior
 			int nbSquare = position[1] - whiteWalkerPosition[1];
 			pilot.travel(squareSize * (nbSquare-2)); // to avoid hit
 		}
-		else if (position[1] < whiteWalkerPosition[1])
+		else if (Map.POSITION[1] < Map.WHITEWALKERPOSITION[1])
 		{
-			switch (position[2])
+			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(80);
 			break;

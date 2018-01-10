@@ -10,6 +10,7 @@ import general.Map;
 import general.Terminator;
 import general.Util;
 import general.Wait;
+import general.Watch;
 import lejos.hardware.Button;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.remote.nxt.BTConnector;
