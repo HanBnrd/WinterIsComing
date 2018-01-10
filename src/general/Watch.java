@@ -17,11 +17,9 @@ public class Watch implements Behavior {
 		return true;
 	}
 
-	public void action() {
+	public void action()
+	{
 		// TODO Auto-generated method stub
-		LCD.clear();
-		LCD.drawString("Watch", 0, 3);
-		LCD.refresh();
 		
 		pilot.travel(Util.SQUAREWIDTH);
 		switch (Map.POSITION[2])

@@ -25,9 +25,6 @@ public class Fight implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		LCD.clear();
-		LCD.drawString("Fight", 0, 3);
-		LCD.refresh();
 		float squareSize = 88;
 		int[] position = Map.POSITION;
 		int[] whiteWalkerPosition = Map.WHITEWALKERPOSITION;
