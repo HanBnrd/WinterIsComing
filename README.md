@@ -15,11 +15,8 @@ Projet de robotique en Java réalisé avec des robots Lego MindStorms EV3 sur un
 
 
 Requis:  
-  1) [Java](https://www.oracle.com/fr/java/index.html)  
-  2) [LeJOS EV3](https://sourceforge.net/projects/ev3.lejos.p/files/0.9.1-beta/)  
-
-
-Pour plus d'information voir le rapport de projet  
+  - [Java](https://www.oracle.com/fr/java/index.html)  
+  - [LeJOS EV3](https://sourceforge.net/projects/ev3.lejos.p/files/0.9.1-beta/)  
 
 
 (c) Université de Lorraine - Nancy
