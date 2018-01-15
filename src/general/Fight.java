@@ -1,7 +1,6 @@
 package general;
 
 import general.Map;
-import lejos.hardware.lcd.LCD;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 

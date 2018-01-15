@@ -10,7 +10,6 @@ import lejos.hardware.sensor.EV3GyroSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
-import lejos.utility.Delay;
 
 public class DetectWhiteWalker implements Behavior
 {
