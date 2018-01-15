@@ -80,7 +80,7 @@ public class DetectWhiteWalker implements Behavior
 		double closerAngle = -1;
 		for (int[] rPos : calculRPos(distance))
 		{
-			double rPosAngle = Math.toDegrees(Math.atan2(rPos[0], rPos[1]));
+			double rPosAngle = Math.toDegrees(Math.atan2(rPos[1], rPos[0]));
 			if (Math.abs(angle - rPosAngle) < Math.abs(angle - closerAngle)
 					|| closerAngle == -1)
 			{
@@ -90,7 +90,7 @@ public class DetectWhiteWalker implements Behavior
 		}
 		
 		LCD.clear();
-		LCD.drawString(whitewalkerPosition[1] + " ; " + whitewalkerPosition[0], 0, 3);
+		LCD.drawString(whitewalkerPosition[0] + " ; " + whitewalkerPosition[1], 0, 3);
 		LCD.refresh();
 		Button.waitForAnyPress();
 		

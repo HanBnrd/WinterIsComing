@@ -48,7 +48,6 @@ public class Fight implements Behavior
 			switch (Map.POSITION[2])
 			{
 			case 0: pilot.rotate(160);
-					
 			break;
 			case 1: pilot.rotate(80);
 			break;
