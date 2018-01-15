@@ -38,19 +38,20 @@ public class DetectWhiteWalker implements Behavior
 		pilot.setAngularSpeed(30);
 		float[] tab = new float[1];
 		//gyroSensor.reset();
-		LCD.clear();
-		LCD.drawString("test", 0, 2);
-		LCD.refresh();
 		ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
 		float distance = tab[0] * 1000;
 		gyroSensor.getAngleMode().fetchSample(tab, 0);
 		float angle = 0 - tab[0];
-		LCD.clear();
-		LCD.drawString("test2", 0, 2);
-		LCD.refresh();
 		
+		LCD.clear();
+		LCD.drawString("" + distance, 0, 2);
+		LCD.drawString("" + angle, 0, 3);
+		LCD.refresh();
 		while (distance >= 550);
 		{
+			LCD.clear();
+			LCD.drawString("test2", 0, 2);
+			LCD.refresh();
 			pilot.rotate(10);
 			pilot.stop();
 			ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
