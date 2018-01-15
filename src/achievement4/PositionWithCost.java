@@ -14,7 +14,7 @@ public class PositionWithCost {
 	public PositionWithCost(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
-		this.cost = 0;
+		this.cost = 1;
 	}
 
 	public int getPosX() {

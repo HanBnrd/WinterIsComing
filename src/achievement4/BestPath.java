@@ -1,13 +1,11 @@
 package achievement4;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.ListIterator;
 import java.util.PriorityQueue;
 
 import achievement4.Enums.Directions;
-import achievement4.Enums.Moves;
 import general.Map;
 
 public class BestPath {
@@ -20,9 +18,63 @@ public class BestPath {
 		finalPos = fin;
 	}
 	
-	public ArrayList<Position> makePath() {
-		PositionComparator pc = new PositionComparator();
-		PriorityQueue<PositionWithCost> toVisit = new PriorityQueue<>(pc);
+	public ArrayList<Position> makePathUCSbis() {
+		ArrayList<PositionWithCost> toVisit1 = new ArrayList<>();
+		ArrayList<PositionWithCost> toVisit5 = new ArrayList<>();
+		ArrayList<PositionWithCost> toVisit10 = new ArrayList<>();
+		ArrayList<Position> visited = new ArrayList<>();
+		Hashtable<PositionWithCost, ArrayList<Position>> paths = new Hashtable<>();
+		toVisit1.add(initPos);
+		paths.put(initPos, new ArrayList<Position>());
+		
+		ArrayList<PositionWithCost> successors;
+		ArrayList<Position> pathSuccs;
+		
+		boolean found = false;
+		PositionWithCost item = null;
+		Position itemPos;
+		while ((!toVisit1.isEmpty() || !toVisit5.isEmpty() || !toVisit10.isEmpty()) && !found) {
+			if(toVisit1.isEmpty()) {
+				if(toVisit5.isEmpty()) {
+					item = toVisit10.remove(toVisit10.size()-1);
+				} else {
+					item = toVisit5.remove(toVisit5.size()-1);
+				}
+			} else {
+				item = toVisit1.remove(toVisit1.size()-1);
+			}
+			if(!alreadyVisited(item, visited)){
+				if(isFinal(item)) {
+					found = true;
+				} else {
+					itemPos = new Position(item);
+					
+					visited.add(itemPos);
+					successors = getSuccessors(item);
+					for(PositionWithCost succ : successors) {
+						pathSuccs = new ArrayList<>(paths.get(item));
+						pathSuccs.add(itemPos);
+						paths.put(succ, pathSuccs);
+						switch(succ.getCost()) {
+						case 1:
+							toVisit1.add(0,succ);
+							break;
+						case 5:
+							toVisit5.add(0,succ);
+							break;
+						case 10:
+							toVisit10.add(0,succ);
+							break;
+						}
+					}
+				}
+			}
+		}
+		return paths.get(item);
+	}
+	
+	public ArrayList<Position> makePathUCS() {
+		PriorityQueue<PositionWithCost> toVisit = new PriorityQueue<PositionWithCost>(new PositionComparator());
 		ArrayList<Position> visited = new ArrayList<>();
 		Hashtable<PositionWithCost, ArrayList<Position>> paths = new Hashtable<>();
 		paths.put(initPos, new ArrayList<Position>());
@@ -85,49 +137,32 @@ public class BestPath {
 	private ArrayList<PositionWithCost> getSuccessors(PositionWithCost pos) {
 		ArrayList<PositionWithCost> succs = new ArrayList<>();
 		int[][] map = Map.map;
-		int cost = pos.getCost();
 		int x = pos.getPosX();
 		int y = pos.getPosY();
 		if (x > 0) {
 			int newX = x-1;
-			int newCost = cost + map[newX][y];
+			int newCost = map[newX][y];
 			if (!finalPos.equals(newX, y))
 				succs.add(new PositionWithCost(newX, y, newCost));
 		}
 		if (x < map.length-1) {
 			int newX = x+1;
-			int newCost = cost + map[newX][y];
+			int newCost = map[newX][y];
 			if (!finalPos.equals(newX, y))
 				succs.add(new PositionWithCost(newX, y, newCost));
 		}
 		if (y > 0) {
 			int newY = y-1;
-			int newCost = cost + map[x][newY];
+			int newCost = map[x][newY];
 			if (!finalPos.equals(x, newY))
 				succs.add(new PositionWithCost(x, newY, newCost));
 		}
 		if  (y < map[0].length-1) {
 			int newY = y+1;
-			int newCost = cost + map[x][newY];
+			int newCost = map[x][newY];
 			if (!finalPos.equals(x, newY))
 				succs.add(new PositionWithCost(x, newY, newCost));
 		}
 		return succs;
-	}
-	
-	private Directions posToDir(Position p1, Position p2) {
-		int p1X = p1.getPosX(), p1Y = p1.getPosY(), p2X = p2.getPosX(), p2Y = p2.getPosY();
-		if (p1X+1 == p2X && p1Y == p2Y) 
-			return Directions.DOWN;
-		else {
-			if (p1X-1 == p2X && p1Y == p2Y) 
-				return Directions.UP;
-			else {
-				if (p1Y+1 == p2Y && p1X == p2X) {
-					return Directions.RIGHT;
-				}
-			}
-		}
-		return Directions.LEFT;
 	}
 }
