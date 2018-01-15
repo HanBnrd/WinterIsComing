@@ -37,13 +37,19 @@ public class DetectWhiteWalker implements Behavior
 		// TODO Auto-generated method stub
 		pilot.setAngularSpeed(30);
 		float[] tab = new float[1];
-		gyroSensor.reset();
+		//gyroSensor.reset();
+		LCD.clear();
+		LCD.drawString("test", 0, 2);
+		LCD.refresh();
 		ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
 		float distance = tab[0] * 1000;
 		gyroSensor.getAngleMode().fetchSample(tab, 0);
 		float angle = 0 - tab[0];
+		LCD.clear();
+		LCD.drawString("test2", 0, 2);
+		LCD.refresh();
 		
-		while (distance >= 550 && angle < 360);
+		while (distance >= 550);
 		{
 			pilot.rotate(10);
 			pilot.stop();
@@ -52,20 +58,17 @@ public class DetectWhiteWalker implements Behavior
 			gyroSensor.getAngleMode().fetchSample(tab, 0);
 			angle = 0 - tab[0];
 		}
-		if (angle < 360)
-		{
-			LCD.clear();
-			LCD.drawString("" + distance, 0, 2);
-			LCD.drawString("" + angle, 0, 3);
-			LCD.refresh();
-			Button.waitForAnyPress();
-			pilot.rotate(0 - angle);
-			Map.WHITEWALKERPOSITION = getWhiteWalkerPosition(distance, tab[0]);
-			LCD.clear();
-			LCD.drawString(Map.WHITEWALKERPOSITION[1] + " ; " + Map.WHITEWALKERPOSITION[0], 0, 3);
-			LCD.refresh();
-			Button.waitForAnyPress();
-		}
+		LCD.clear();
+		LCD.drawString("" + distance, 0, 2);
+		LCD.drawString("" + angle, 0, 3);
+		LCD.refresh();
+		Button.waitForAnyPress();
+		pilot.rotate(0 - angle);
+		Map.WHITEWALKERPOSITION = getWhiteWalkerPosition(distance, tab[0]);
+		LCD.clear();
+		LCD.drawString(Map.WHITEWALKERPOSITION[1] + " ; " + Map.WHITEWALKERPOSITION[0], 0, 3);
+		LCD.refresh();
+		Button.waitForAnyPress();
 	}
 
 	@Override
