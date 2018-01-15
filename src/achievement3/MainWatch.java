@@ -10,7 +10,6 @@ import general.Map;
 import general.Terminator;
 import general.Util;
 import general.Wait;
-import general.Watch;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.BaseSensor;
@@ -31,7 +30,7 @@ public class MainWatch {
         Button.waitForAnyPress();
         Map.POSITION[0] = 6;
         Map.POSITION[1] = 0;
-        Map.POSITION[2] = 3;
+        Map.POSITION[2] = 0;
 		MovePilot pilot = Util.newPilot();
 		BTConnector bt = new BTConnector();
 		NXTConnection btc = bt.waitForConnection(100000,NXTConnection.PACKET);
