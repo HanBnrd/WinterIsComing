@@ -11,7 +11,7 @@ License: GNU GPL 3.0
 
 
 Description:  
-Robotics project for Lego MindStorms EV3 robots on a colored grid using AI  
+Robotics project for Lego MindStorms EV3 robots using AI on a colored grid  
 
 
 Requis:  
