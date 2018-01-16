@@ -11,7 +11,7 @@ License: GNU GPL 3.0
 
 
 Description:  
-Projet de robotique en Java réalisé avec des robots Lego MindStorms EV3 sur un labyrinthe de cases de couleurs  
+Robotics project for Lego MindStorms EV3 robots on a colored grid using AI  
 
 
 Requis:  
