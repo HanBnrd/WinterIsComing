@@ -48,6 +48,11 @@ public class Main
 		arby.go();
 	}
 	
+	/**
+	 * Mesure les valeurs de reference pour les couleurs a detecter dans l'exploration de la carte
+	 * @param cs une instance de la classe liee au capteur de couleurs
+	 * @return une Hashtable ayant en cle un objet de l'enumeration Colour, et en valeur la mesure de la couleur
+	 */
 	private static Hashtable<Colour,float[]> getColourValues(EV3ColorSensor cs)
 	{
 		Hashtable<Colour, float[]> nuances = new Hashtable<Colour, float[]>();

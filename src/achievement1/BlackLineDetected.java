@@ -15,6 +15,12 @@ public class BlackLineDetected implements Behavior
 	private MovePilot pilot;
 	private int nbCasesParcourues;
 
+	/**
+	 * Constructeur du comportement BlackLineDetected
+	 * @param cs une instance de la classe liee au capteur de couleurs
+	 * @param colours les couleurs de reference mesurees par la phase d'initiation
+	 * @param p l'instance de MovePilot utilisee
+	 */
 	public BlackLineDetected(EV3ColorSensor cs, Hashtable<Colour,float[]> colours, MovePilot p)
 	{
 		// TODO Auto-generated constructor stub
@@ -34,12 +40,21 @@ public class BlackLineDetected implements Behavior
 		return c == Colour.BLACK;
 	}
 
+	/**
+	 * Prend une mesure avec le capteur de couleur et l'associe a une des couleurs initialement definies
+	 * @return la couleur mesuree
+	 */
 	public Colour getSensorColour() {
 		colorSensor.fetchSample(sample, 0);
 		Colour colour = getColour(sample);
 		return colour;
 	}
 	
+	/**
+	 * Definition des messages a afficher lors du parcours de chaque type de case
+	 * @param col la couleur de la case mesurée
+	 * @return le message a afficher
+	 */
 	public String getMessage(Colour col) {
 		String message = "Position inconnue";
 		switch (col)
@@ -84,6 +99,11 @@ public class BlackLineDetected implements Behavior
 		//Button.waitForAnyPress();
 	}
 
+	/**
+	 * Permet de faire le lien entre une mesure RGB et une couleur 
+	 * @param rgb la mesure
+	 * @return une des couleurs definies, ou UNKNOWN si la couleur est inconnue
+	 */
 	public Colour getColour(float[] rgb) {
 		// TODO Auto-generated method stub
 		float[] tabColours;

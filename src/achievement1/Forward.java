@@ -13,6 +13,12 @@ public class Forward implements Behavior
 	Hashtable<Colour,float[]> colours;
 	float[] sample;
 	
+	/**
+	 * Constructeur du comportement Forward
+	 * @param c une instance de la classe liee au capteur de couleurs
+	 * @param colours les couleurs de reference mesurees par la phase d'initiation
+	 * @param p l'instance de MovePilot utilisee
+	 */
 	public Forward(EV3ColorSensor c, Hashtable<Colour,float[]> colours, MovePilot p)
 	{
 		// TODO Auto-generated constructor stub
@@ -35,14 +41,16 @@ public class Forward implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		/*LCD.clear();
-		LCD.drawString("Forward !", 0, 2);
-		LCD.refresh();*/
 		if (!pilot.isMoving())
 			pilot.forward();
 		Thread.yield();
 	}
-	
+
+	/**
+	 * Permet de faire le lien entre une mesure RGB et une couleur 
+	 * @param rgb la mesure
+	 * @return une des couleurs definies, ou UNKNOWN si la couleur est inconnue
+	 */
 	public Colour getColour(float[] rgb) {
 		// TODO Auto-generated method stub
 		float[] tabColours;
