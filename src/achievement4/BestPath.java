@@ -40,8 +40,7 @@ public class BestPath {
 			pathSuccs = new ArrayList<>();
 			pathSuccs.add(new Position(initPos));
 			paths.put(succ, pathSuccs);
-		}
-		
+		}	
 		boolean found = false;
 		PositionWithCost item = null;
 		Position itemPos;
@@ -52,8 +51,7 @@ public class BestPath {
 				if(isFinal(item)) {
 					found = true;
 				} else {
-					itemPos = new Position(item);
-					
+					itemPos = new Position(item);	
 					visited.add(itemPos);
 					successors = getSuccessors(item);
 					for(PositionWithCost succ : successors) {
@@ -79,13 +77,13 @@ public class BestPath {
 		ArrayList<PositionWithCost> toVisit5 = new ArrayList<>();
 		ArrayList<PositionWithCost> toVisit10 = new ArrayList<>();
 		ArrayList<Position> visited = new ArrayList<>();
+		//On stocke le chemin pour aller a chaque case
 		Hashtable<PositionWithCost, ArrayList<Position>> paths = new Hashtable<>();
 		toVisit1.add(initPos);
 		paths.put(initPos, new ArrayList<Position>());
 		
 		ArrayList<PositionWithCost> successors;
 		ArrayList<Position> pathSuccs;
-		
 		boolean found = false;
 		PositionWithCost item = null;
 		Position itemPos;
@@ -103,8 +101,7 @@ public class BestPath {
 				if(isFinal(item)) {
 					found = true;
 				} else {
-					itemPos = new Position(item);
-					
+					itemPos = new Position(item);	
 					visited.add(itemPos);
 					successors = getSuccessors(item);
 					for(PositionWithCost succ : successors) {

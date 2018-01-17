@@ -53,6 +53,7 @@ public class FightFast implements Behavior
 				Delay.msDelay(10000);
 				break;
 			}
+			//On pivote dans les cas ou le robot n'est pas positionne correctement par rapport a la case a atteindre, puis on avance d'une case
 			if (Map.POSITION[0] > position.getPosX())
 			{
 				switch (Map.POSITION[2])
@@ -83,7 +84,7 @@ public class FightFast implements Behavior
 				pilot.travel(Util.SQUAREWIDTH);
 				Map.POSITION[0] += 1;
 			}
-			if (Map.POSITION[1] > position.getPosY())
+			else if (Map.POSITION[1] > position.getPosY())
 			{
 				switch (Map.POSITION[2])
 				{

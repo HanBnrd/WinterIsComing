@@ -23,10 +23,12 @@ public class MainFast {
 		LCD.drawString("Bonjour", 0, 2);
 		LCD.refresh();
         Button.waitForAnyPress();
+        //Position initiale de la garde de nuit
         Map.POSITION[0] = 6;
         Map.POSITION[1] = 0;
         Map.POSITION[2] = 0;
 		MovePilot pilot = Util.newPilot();
+		//Reception de la position du marcheur blanc
 		BTConnector bt = new BTConnector();
 		NXTConnection btc = bt.waitForConnection(100000,NXTConnection.PACKET);
 		InputStream is = btc.openInputStream();
@@ -41,7 +43,7 @@ public class MainFast {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} // récupère la valeur dans le flux
+		}
 		ArrayList<BaseSensor> al=new ArrayList<>();
 		Behavior w=new Wait();
 		Behavior f=new FightFast(pilot);

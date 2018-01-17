@@ -15,10 +15,15 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Terminator implements Behavior
 {
-	ArrayList<BaseSensor> sensors;
-	Arbitrator arbitrator;
-	MovePilot pilot;
+	private ArrayList<BaseSensor> sensors;
+	private Arbitrator arbitrator;
+	private MovePilot pilot;
 	
+	/**
+	 * 
+	 * @param sensors
+	 * @param p
+	 */
 	public Terminator(ArrayList<BaseSensor> sensors, MovePilot p)
 	{
 		// TODO Auto-generated constructor stub

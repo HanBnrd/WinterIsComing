@@ -29,7 +29,7 @@ public class MainWatch {
 		Terminator terminator = new Terminator(sensors, pilot);
 		Fight fight = new Fight(pilot);
 		Behavior dww = new DetectWhiteWalker(uts, gyro, pilot);
-		Behavior watch = new Watch(pilot);
+		//Behavior watch = new Watch(pilot);
 		Behavior[] bArray = {dww, fight, terminator}; // du moins prioritaire au plus prioritaire
 		Arbitrator arby = new Arbitrator(bArray);
 		terminator.setArbitrator(arby);

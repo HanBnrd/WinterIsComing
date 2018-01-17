@@ -4,6 +4,9 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Wait implements Behavior {
 	
+	/**
+	 * Constructeur du comportement de base qui ne sert qu'a attendre
+	 */
 	public Wait() {
 		// TODO Auto-generated constructor stub
 	}

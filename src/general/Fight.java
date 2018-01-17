@@ -6,8 +6,13 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Fight implements Behavior
 {
-	MovePilot pilot;
+	private MovePilot pilot;
 	
+	/**
+	 * Constructeur du comportement permettant a la garde de nuit de se rapprocher du marcheur blanc sans prendre en compte le cout
+	 * Le mouvement se fait d'abord en hauteur puis en largeur
+	 * @param pilot l'instance de MovePilot du robot garde de nuit
+	 */
 	public Fight(MovePilot pilot)
 	{
 		this.pilot = pilot;

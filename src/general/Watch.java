@@ -4,7 +4,7 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Watch implements Behavior {
-	MovePilot pilot;
+	private MovePilot pilot;
 	
 	public Watch(MovePilot pilot) {
 		// TODO Auto-generated constructor stub

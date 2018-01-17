@@ -1,29 +1,22 @@
 package achievement2;
 
-import java.util.ArrayList;
-
-import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.Battery;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
-import lejos.hardware.sensor.BaseSensor;
-import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
-public class TerminatorSensor implements Behavior
+public class SimpleTerminator implements Behavior
 {
-	private ArrayList<BaseSensor> sensors;
 	private Arbitrator arbitrator;
 	
 	/**
 	 * Constructeur du comportement mettant fin au programme
 	 * @param sensors les capteurs utilises par le programme qu'il faut fermer
 	 */
-	public TerminatorSensor(ArrayList<BaseSensor> sensors)
+	public SimpleTerminator()
 	{
 		// TODO Auto-generated constructor stub
-		this.sensors = sensors;
 	}
 	
 	void setArbitrator(Arbitrator arby)
@@ -42,15 +35,6 @@ public class TerminatorSensor implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		for (BaseSensor sensor : sensors)
-		{
-			if (sensor instanceof EV3TouchSensor)
-				((EV3TouchSensor) sensor).close();
-			else if (sensor instanceof EV3ColorSensor)
-				((EV3ColorSensor) sensor).close();
-			else
-				sensor.close();
-		}
 		arbitrator.stop();
 		LCD.clear();
 		LCD.drawString("Au revoir", 0, 0);

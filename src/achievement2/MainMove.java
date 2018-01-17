@@ -1,12 +1,9 @@
 package achievement2;
 
-import java.util.ArrayList;
-
 import general.Map;
 import general.Wait;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
-import lejos.hardware.sensor.BaseSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
@@ -18,8 +15,7 @@ public class MainMove {
         Map.POSITION[0] = 6;
         Map.POSITION[1] = 0;
         Map.POSITION[2] = 0;
-        ArrayList<BaseSensor> al=new ArrayList<>();
-        TerminatorSensor t=new TerminatorSensor(al);
+        SimpleTerminator t=new SimpleTerminator();
         Behavior w=new Wait();
         Behavior dp=new DisplayPosition();
         Behavior bf=new Forward();
