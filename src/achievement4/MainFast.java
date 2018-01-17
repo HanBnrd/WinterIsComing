@@ -20,7 +20,6 @@ import lejos.robotics.subsumption.Behavior;
 public class MainFast {
 
 	public static void main(String[] args) {
-		LCD.clear();
 		LCD.drawString("Bonjour", 0, 2);
 		LCD.refresh();
         Button.waitForAnyPress();

@@ -10,8 +10,11 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class TurnBack implements Behavior {
-	MovePilot pilot;
+	private MovePilot pilot;
 	
+	/**
+	 * Constructeur du comportement permettant de faire un demi-tour
+	 */
 	public TurnBack() {
 		// TODO Auto-generated constructor stub
 		Wheel wheelB = WheeledChassis.modelWheel(Motor.B,56).offset(-127);

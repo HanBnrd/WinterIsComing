@@ -3,15 +3,9 @@ package achievement2;
 import general.Map;
 import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
-import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class DisplayPosition implements Behavior {
-	MovePilot pilot;
-	
-	public DisplayPosition() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public boolean takeControl() {
 		// TODO Auto-generated method stub

@@ -13,10 +13,16 @@ import lejos.robotics.subsumption.Behavior;
 
 public class DetectWhiteWalker implements Behavior
 {
-	MovePilot pilot;
-	EV3UltrasonicSensor ultrasonicSensor;
-	EV3GyroSensor gyroSensor;
+	private MovePilot pilot;
+	private EV3UltrasonicSensor ultrasonicSensor;
+	private EV3GyroSensor gyroSensor;
 	
+	/**
+	 * Constructeur du comportement permettant a la garde de nuit de detecter le marcheur blanc
+	 * @param uts l'instance du capteur a ultrason
+	 * @param gyro l'instance du gyroscope
+	 * @param pilot l'instance de MovePilot associe au robot garde de nuit
+	 */
 	public DetectWhiteWalker(EV3UltrasonicSensor uts, EV3GyroSensor gyro, MovePilot pilot)
 	{
 		// TODO Auto-generated constructor stub
@@ -36,7 +42,6 @@ public class DetectWhiteWalker implements Behavior
 		// TODO Auto-generated method stub
 		pilot.setAngularSpeed(30);
 		float[] tab = new float[1];
-		//gyroSensor.reset();
 		ultrasonicSensor.getDistanceMode().fetchSample(tab, 0);
 		float distance = tab[0] * 1000;
 		gyroSensor.getAngleMode().fetchSample(tab, 0);
@@ -77,6 +82,12 @@ public class DetectWhiteWalker implements Behavior
 
 	}
 	
+	/**
+	 * Calcule la position du marcheur blanc a partir de sa distance par rapport a la garde de nuit et l'angle par rapport a la carte
+	 * @param distance
+	 * @param angle
+	 * @return la position en x et en y du marcheur blanc
+	 */
 	private int[] getWhiteWalkerPosition(float distance, float angle)
 	{
 		int[] whitewalkerPosition = new int[2];
@@ -103,6 +114,11 @@ public class DetectWhiteWalker implements Behavior
 		return whitewalkerPosition;
 	}
 
+	/**
+	 * Calcule une liste de positions relatives en fonction de la distance separant la garde de nuit du marcheur blanc
+	 * @param distance
+	 * @return la liste des positions
+	 */
 	private ArrayList<int[]> calculRPos(float distance)
 	{
 		float length = 0;

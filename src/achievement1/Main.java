@@ -24,6 +24,7 @@ public class Main
         ArrayList<BaseSensor> sensors = new ArrayList<BaseSensor>();
 		LCD.drawString("Appuyez pour", 0, 2);
 		LCD.drawString("calibrer", 0, 3);
+		LCD.refresh();
 		EV3ColorSensor cs = new EV3ColorSensor(SensorPort.S3);
 		cs.setCurrentMode(cs.getRGBMode().getName());
 		sensors.add(cs);

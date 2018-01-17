@@ -13,9 +13,13 @@ import lejos.robotics.subsumption.Behavior;
 
 public class TerminatorSensor implements Behavior
 {
-	ArrayList<BaseSensor> sensors;
-	Arbitrator arbitrator;
+	private ArrayList<BaseSensor> sensors;
+	private Arbitrator arbitrator;
 	
+	/**
+	 * Constructeur du comportement mettant fin au programme
+	 * @param sensors les capteurs utilises par le programme qu'il faut fermer
+	 */
 	public TerminatorSensor(ArrayList<BaseSensor> sensors)
 	{
 		// TODO Auto-generated constructor stub

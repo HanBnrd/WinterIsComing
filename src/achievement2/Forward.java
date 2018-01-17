@@ -10,8 +10,11 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class Forward implements Behavior {
-	MovePilot pilot;
+	private MovePilot pilot;
 	
+	/**
+	 * Constructeur du comportement Forward, permettant d'avancer d'une case en ligne droite
+	 */
 	public Forward() {
 		// TODO Auto-generated constructor stub
 		Wheel wheelB = WheeledChassis.modelWheel(Motor.B,56).offset(-60);

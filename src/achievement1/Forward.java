@@ -8,10 +8,10 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Forward implements Behavior
 {
-	MovePilot pilot;
-	EV3ColorSensor cs;
-	Hashtable<Colour,float[]> colours;
-	float[] sample;
+	private MovePilot pilot;
+	private EV3ColorSensor cs;
+	private Hashtable<Colour,float[]> colours;
+	private float[] sample;
 	
 	/**
 	 * Constructeur du comportement Forward

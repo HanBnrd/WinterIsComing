@@ -14,9 +14,14 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class SendPosition implements Behavior {
-	MovePilot pilot;
-	boolean messageSent;
+	private MovePilot pilot;
+	private boolean messageSent;
 	
+	/**
+	 * Constructeur du comportement permettant d'areter le mouvement du marcheur blanc
+	 * et d'envoyer sa position a la garde de nuit
+	 * @param mp l'instance de MovePilot rattachee au marcheur blanc
+	 */
 	public SendPosition(MovePilot mp) {
 		// TODO Auto-generated constructor stub
 		this.pilot = mp;

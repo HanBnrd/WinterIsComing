@@ -27,6 +27,7 @@ public class MainWatch {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LCD.drawString("Bonjour", 0, 3);
+		LCD.refresh();
         Button.waitForAnyPress();
         Map.POSITION[0] = 6;
         Map.POSITION[1] = 0;

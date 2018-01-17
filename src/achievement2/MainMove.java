@@ -5,13 +5,15 @@ import java.util.ArrayList;
 import general.Map;
 import general.Wait;
 import lejos.hardware.Button;
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.sensor.BaseSensor;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
 public class MainMove {
 	public static void main(String[] args) {
-		System.out.println("Bonjour");
+		LCD.drawString("Bonjour", 0, 2);
+		LCD.refresh();
         Button.waitForAnyPress();
         Map.POSITION[0] = 6;
         Map.POSITION[1] = 0;

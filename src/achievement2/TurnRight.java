@@ -10,8 +10,11 @@ import lejos.robotics.navigation.MovePilot;
 import lejos.robotics.subsumption.Behavior;
 
 public class TurnRight implements Behavior {
-	MovePilot pilot;
+	private MovePilot pilot;
 	
+	/**
+	 * Constructeur du comportement permettant de tourner a droite
+	 */
 	public TurnRight() {
 		// TODO Auto-generated constructor stub
 		Wheel wheelB = WheeledChassis.modelWheel(Motor.B,56).offset(-120);

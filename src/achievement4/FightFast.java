@@ -11,8 +11,13 @@ import lejos.utility.Delay;
 
 public class FightFast implements Behavior
 {
-	MovePilot pilot;
+	private MovePilot pilot;
 	
+	/**
+	 * Constructeur du comportement permettant a la garde de nuit de se rapprocher du marcheur blanc en un cout minimum
+	 * Attend 1, 5 ou 10 secondes suivant la case parcourue
+	 * @param pilot l'instance de MovePilot du robot garde de nuit
+	 */
 	public FightFast(MovePilot pilot) {
 		// TODO Auto-generated constructor stub
 		this.pilot = pilot;
@@ -39,13 +44,13 @@ public class FightFast implements Behavior
 			valuePos = Map.map[Map.POSITION[0]][Map.POSITION[1]];
 			switch(valuePos) {
 			case 1:
-				Delay.msDelay(500);
+				Delay.msDelay(1000);
 				break;
 			case 5:
-				Delay.msDelay(2500);
+				Delay.msDelay(5000);
 				break;
 			case 10:
-				Delay.msDelay(5000);
+				Delay.msDelay(10000);
 				break;
 			}
 			if (Map.POSITION[0] > position.getPosX())
