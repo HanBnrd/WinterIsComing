@@ -6,6 +6,10 @@ import lejos.robotics.subsumption.Behavior;
 public class Watch implements Behavior {
 	private MovePilot pilot;
 	
+	/**
+	 * Constructeur du comportement permettant de faire une patrouille en L entre 2 campements pour la garde de nuit 
+	 * @param pilot l'instance de MovePilot associee au robot garde de nuit
+	 */
 	public Watch(MovePilot pilot) {
 		// TODO Auto-generated constructor stub
 		this.pilot = pilot;
