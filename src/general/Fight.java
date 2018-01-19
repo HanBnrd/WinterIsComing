@@ -29,7 +29,7 @@ public class Fight implements Behavior
 	public void action()
 	{
 		// TODO Auto-generated method stub
-		float squareSize = 88;
+		float squareSize = Util.SQUAREWIDTH;
 		int[] position = Map.POSITION;
 		int[] whiteWalkerPosition = Map.WHITEWALKERPOSITION;
 		if (position[0] > whiteWalkerPosition[0])
