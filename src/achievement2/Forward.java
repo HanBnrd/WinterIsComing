@@ -11,7 +11,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class Forward implements Behavior {
 	private MovePilot pilot;
-	
+
 	/**
 	 * Constructeur du comportement Forward, permettant d'avancer d'une case en ligne droite
 	 */
@@ -34,6 +34,7 @@ public class Forward implements Behavior {
 		// TODO Auto-generated method stub
 		pilot.travel(90);
         pilot.stop();
+				// ajust position according to the orientation
         if (Map.POSITION[2]==0) {
         	Map.POSITION[0]=Map.POSITION[0]-1;
         } else if (Map.POSITION[2]==1) {

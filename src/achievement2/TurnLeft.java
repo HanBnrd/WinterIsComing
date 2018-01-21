@@ -11,7 +11,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class TurnLeft implements Behavior {
 	private MovePilot pilot;
-	
+
 	/**
 	 * Constructeur du comportement permettant de tourner a gauche
 	 */
@@ -39,6 +39,7 @@ public class TurnLeft implements Behavior {
         pilot.stop();
         pilot.travel(10);
         pilot.stop();
+				// ajust position according to the orientation
         if (Map.POSITION[2]==0) {
         	Map.POSITION[2]=3;
         	Map.POSITION[1]=Map.POSITION[1]-1;

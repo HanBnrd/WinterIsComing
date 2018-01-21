@@ -11,7 +11,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class TurnBack implements Behavior {
 	private MovePilot pilot;
-	
+
 	/**
 	 * Constructeur du comportement permettant de faire un demi-tour
 	 */
@@ -37,6 +37,7 @@ public class TurnBack implements Behavior {
         pilot.stop();
         pilot.rotate(170);
         pilot.stop();
+				// ajust position according to the orientation
         if (Map.POSITION[2]==0) {
         	Map.POSITION[2]=2;
         	Map.POSITION[0]=Map.POSITION[0]+1;

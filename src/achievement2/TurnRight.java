@@ -11,7 +11,7 @@ import lejos.robotics.subsumption.Behavior;
 
 public class TurnRight implements Behavior {
 	private MovePilot pilot;
-	
+
 	/**
 	 * Constructeur du comportement permettant de tourner a droite
 	 */
@@ -39,6 +39,7 @@ public class TurnRight implements Behavior {
 		 pilot.stop();
 	     pilot.travel(20);
 	     pilot.stop();
+			 // ajust position according to the orientation
 	     if (Map.POSITION[2]==0) {
 	        	Map.POSITION[2]=1;
 	        	Map.POSITION[1]=Map.POSITION[1]+1;
