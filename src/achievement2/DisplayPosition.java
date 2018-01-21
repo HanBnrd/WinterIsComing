@@ -15,6 +15,7 @@ public class DisplayPosition implements Behavior {
 	public void action() {
 		// TODO Auto-generated method stub
 		LCD.clear();
+		// diplay robot's position on map
 		LCD.drawString(Map.POSITION[0]+" "+" "+Map.POSITION[1], 0, 3);
 		LCD.refresh();
 	}
