@@ -2,7 +2,6 @@ package achievement5;
 
 import java.util.ArrayList;
 
-import general.Watch;
 import general.Fight;
 import general.Terminator;
 import general.Util;
