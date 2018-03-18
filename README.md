@@ -14,7 +14,7 @@ Description:
 Robotics project for Lego MindStorms EV3 robots using AI on a colored grid  
 
 
-Requis:  
+Requires:  
   - [Java](https://www.oracle.com/fr/java/index.html)  
   - [LeJOS EV3](https://sourceforge.net/projects/ev3.lejos.p/files/0.9.1-beta/)  
 
